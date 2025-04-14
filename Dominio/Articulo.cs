@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TPWinForm_equipo_10A
+namespace Dominio
+
 {
-    internal class Articulo
+    public class Articulo
     {
         public int Codigo { get; set; }
         public string Nombre { get; set; }
