@@ -109,4 +109,4 @@ insert into imagenes values
 
 select * from ARTICULOS
 
-Select Codigo, Nombre, Descripcion, Precio From ARTICULOS
+Select Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, Precio From ARTICULOS A, MARCAS M, CATEGORIAS C Where M.Id = A.IdMarca AND C.Id = A.IdCategoria 
