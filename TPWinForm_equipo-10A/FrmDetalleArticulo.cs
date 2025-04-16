@@ -7,14 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Negocio;
 
 namespace TPWinForm_equipo_10A
 {
-    public partial class Form1 : Form
+    public partial class FrmDetalleArticulo : Form
     {
-        public Form1()
+        public FrmDetalleArticulo()
         {
             InitializeComponent();
+        }
+
+        private void FrmDetalleArticulo_Load(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            dgvArticulos.DataSource = negocio.listar();
+
+
         }
     }
 }

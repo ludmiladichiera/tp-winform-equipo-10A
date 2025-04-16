@@ -21,7 +21,7 @@ namespace Negocio
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "Select Codigo, Nombre, Descripcion, Precio From ARTICULOS"; //ver aca! es la consulta de sql
+                comando.CommandText = "Select Codigo, Nombre, Descripcion, Precio From ARTICULOS"; 
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -30,7 +30,7 @@ namespace Negocio
                 while (lector.Read()) //posiciona el puntero
                 {
                     Articulo aux = new Articulo();
-                    aux.Codigo = (int)lector["Codigo"];
+                    aux.Codigo = (string)lector["Codigo"];
                     aux.Nombre = (string)lector["Nombre"];
                     aux.Descripcion = (string)lector["Descripcion"];
                     aux.Precio = (decimal)lector["Precio"];

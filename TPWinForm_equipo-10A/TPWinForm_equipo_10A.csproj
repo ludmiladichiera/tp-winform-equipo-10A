@@ -64,23 +64,20 @@
     <Compile Include="frmAdminMarcas.Designer.cs">
       <DependentUpon>frmAdminMarcas.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDetalleArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDetalleArticulo.Designer.cs">
+      <DependentUpon>FrmDetalleArticulo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Administracion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Administracion.Designer.cs">
-      <DependentUpon>Administracion.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Administracion.resx">
-      <DependentUpon>Administracion.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmAdminArticulos.resx">
       <DependentUpon>frmAdminArticulos.cs</DependentUpon>
     </EmbeddedResource>
@@ -89,6 +86,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAdminMarcas.resx">
       <DependentUpon>frmAdminMarcas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDetalleArticulo.resx">
+      <DependentUpon>FrmDetalleArticulo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
+using Negocio;
 
 namespace TPWinForm_equipo_10A
 {
@@ -16,7 +18,7 @@ namespace TPWinForm_equipo_10A
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            Application.Run(new FrmDetalleArticulo());
         }
     }
 }
