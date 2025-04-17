@@ -109,4 +109,16 @@ insert into imagenes values
 
 select * from ARTICULOS
 
-Select Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, Precio From ARTICULOS A, MARCAS M, CATEGORIAS C Where M.Id = A.IdMarca AND C.Id = A.IdCategoria 
+/*Select Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, Precio From ARTICULOS A, MARCAS M, CATEGORIAS C Where M.Id = A.IdMarca AND C.Id = A.IdCategoria 
+
+Select A.Codigo, A.Nombre, A.Descripcion, M.Descripcion AS Marca, C.Descripcion AS Categoria, A.Precio FROM ARTICULOS A LEFT JOIN MARCAS M ON M.Id = A.IdMarca LEFT JOIN CATEGORIAS C ON C.Id = A.IdCategoria;
+*/
+
+Select A.Id, A.Codigo, A.Nombre, A.Descripcion, A.IdMarca, M.Descripcion AS Marca, 
+                     A.IdCategoria, C.Descripcion AS Categoria, A.Precio, 
+                     MIN(I.ImagenUrl) AS ImagenesUrl
+                     FROM ARTICULOS A
+                     JOIN MARCAS M ON A.IdMarca = M.Id
+                     LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id
+                     LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo
+                     GROUP BY A.Id, A.Codigo, A.Nombre, A.Descripcion, A.IdMarca, M.Descripcion, A.IdCategoria, C.Descripcion, A.Precio;

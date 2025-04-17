@@ -12,7 +12,18 @@ namespace Dominio
        
             public int Id { get; set; }
             public int IdArticulo { get; set; }
-            public string ImagenUrl { get; set; }
+            public string ImagenUrl { get; set; } 
+            public Imagen() { }
+            public Imagen(string img)
+        {
+            ImagenUrl = img;
+        }
+
+        public override string ToString()
+        {
+            return ImagenUrl;
+        }
+
     }
 }
 
