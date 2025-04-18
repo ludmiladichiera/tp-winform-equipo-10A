@@ -45,14 +45,22 @@ namespace TPWinForm_equipo_10A
         }
 
         private void frmAgregarArticulo_Load(object sender, EventArgs e)
-        {
-            cboMarca.Items.Add("Samsung");
-            cboMarca.Items.Add("Sony");
-            cboMarca.Items.Add("Apple");
+        {         
 
-            cboCategoria.Items.Add("Celulares");
-            cboCategoria.Items.Add("Media");
-            cboCategoria.Items.Add("Televisores");
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+
+            try
+            {
+                cboCategoria.DataSource = categoriaNegocio.listar();
+                cboMarca.DataSource = marcaNegocio.listar();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            
         }
 
         private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
