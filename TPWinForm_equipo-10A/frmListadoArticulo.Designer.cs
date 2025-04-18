@@ -1,6 +1,6 @@
 ﻿namespace TPWinForm_equipo_10A
 {
-    partial class FrmDetalleArticulo
+    partial class frmListadoArticulo
     {
         /// <summary>
         /// Required designer variable.
@@ -37,37 +37,29 @@
             // dgvArticulos
             // 
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvArticulos.Location = new System.Drawing.Point(11, 26);
-            this.dgvArticulos.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvArticulos.MultiSelect = false;
+            this.dgvArticulos.Location = new System.Drawing.Point(0, 0);
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.RowHeadersWidth = 51;
             this.dgvArticulos.RowTemplate.Height = 24;
-            this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticulos.Size = new System.Drawing.Size(518, 306);
+            this.dgvArticulos.Size = new System.Drawing.Size(690, 376);
             this.dgvArticulos.TabIndex = 0;
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
             // pbxArticulo
             // 
-            this.pbxArticulo.Location = new System.Drawing.Point(542, 39);
-            this.pbxArticulo.Margin = new System.Windows.Forms.Padding(2);
+            this.pbxArticulo.Location = new System.Drawing.Point(721, 21);
             this.pbxArticulo.Name = "pbxArticulo";
-            this.pbxArticulo.Size = new System.Drawing.Size(298, 278);
-            this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxArticulo.Size = new System.Drawing.Size(219, 342);
             this.pbxArticulo.TabIndex = 1;
             this.pbxArticulo.TabStop = false;
-            this.pbxArticulo.Click += new System.EventHandler(this.pbxArticulo_Click);
             // 
             // FrmDetalleArticulo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(895, 366);
+            this.ClientSize = new System.Drawing.Size(995, 450);
             this.Controls.Add(this.pbxArticulo);
             this.Controls.Add(this.dgvArticulos);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmDetalleArticulo";
             this.Text = "Detalle_Articulo";
             this.Load += new System.EventHandler(this.FrmDetalleArticulo_Load);

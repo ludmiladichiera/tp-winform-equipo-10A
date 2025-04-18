@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
+using Negocio;
 
 namespace TPWinForm_equipo_10A
 {
@@ -27,7 +29,7 @@ namespace TPWinForm_equipo_10A
 
         }
 
-        private void btnAdminMarcas_Click(object sender, EventArgs e)
+        private void btnAdminMarcas_Click(object sender, EventArgs e) //agregar articulo (no me deja cambiar el nombre :( )
         {
             frmAgregarArticulo ventana = new frmAgregarArticulo();
             ventana.ShowDialog();
@@ -41,6 +43,16 @@ namespace TPWinForm_equipo_10A
         private void btnListadoArticulos_Click(object sender, EventArgs e)
         {
             FrmDetalleArticulo ventana = new FrmDetalleArticulo();
+            ventana.ShowDialog();
+        }
+
+        private void btnModificarArticulos_Click(object sender, EventArgs e)
+        {
+            //Articulo seleccionado;
+            //seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+            
+            frmAgregarArticulo ventana = new frmAgregarArticulo();
             ventana.ShowDialog();
         }
     }

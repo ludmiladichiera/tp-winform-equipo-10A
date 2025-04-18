@@ -80,6 +80,7 @@ namespace TPWinForm_equipo_10A
                 nuevoArticulo.Descripcion = txtDescripcion.Text;
                 nuevoArticulo.Marca = (Marca)cboMarca.SelectedItem;
                 nuevoArticulo.Categoria = (Categoria)cboCategoria.SelectedItem;
+                //aca agregar IMAGEN- video 14
                 nuevoArticulo.Precio = decimal.Parse(txtPrecio.Text);
 
                 negocio.agregarArticulo(nuevoArticulo);
@@ -98,6 +99,23 @@ namespace TPWinForm_equipo_10A
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void txtUrlImagen_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUrlImagen_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                pbxArticulo.Load(txtUrlImagen.Text);
+            }
+            catch
+            {
+                pbxArticulo.Load("https://media.istockphoto.com/id/1128826884/es/vector/ning%C3%BAn-s%C3%ADmbolo-de-vector-de-imagen-falta-icono-disponible-no-hay-galer%C3%ADa-para-este-momento.jpg?s=612x612&w=0&k=20&c=9vnjI4XI3XQC0VHfuDePO7vNJE7WDM8uzQmZJ1SnQgk=");
+            }
         }
     }
 }

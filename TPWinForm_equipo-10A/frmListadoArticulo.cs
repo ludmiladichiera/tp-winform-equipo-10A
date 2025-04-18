@@ -12,10 +12,10 @@ using Negocio;
 
 namespace TPWinForm_equipo_10A
 {
-    public partial class FrmDetalleArticulo : Form
+    public partial class frmListadoArticulo : Form
     {
         //private List<Articulo> listaArticulo;
-        public FrmDetalleArticulo()
+        public frmListadoArticulo()
         {
             InitializeComponent();
         }
@@ -25,6 +25,7 @@ namespace TPWinForm_equipo_10A
             ArticuloNegocio negocio = new ArticuloNegocio();
             //listaArticulo = negocio.listar();
             dgvArticulos.DataSource = negocio.listar();
+
 
         }
 
@@ -50,11 +51,6 @@ namespace TPWinForm_equipo_10A
             }
 
 
-
-        }
-
-        private void pbxArticulo_Click(object sender, EventArgs e)
-        {
 
         }
     }
