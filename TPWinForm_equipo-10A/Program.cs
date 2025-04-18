@@ -18,7 +18,7 @@ namespace TPWinForm_equipo_10A
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmDetalleArticulo());
+            Application.Run(new frmMain());
         }
     }
 }

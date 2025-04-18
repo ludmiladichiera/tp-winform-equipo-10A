@@ -64,6 +64,12 @@
     <Compile Include="frmAdminMarcas.Designer.cs">
       <DependentUpon>frmAdminMarcas.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAgregarArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAgregarArticulo.Designer.cs">
+      <DependentUpon>frmAgregarArticulo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDetalleArticulo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAdminMarcas.resx">
       <DependentUpon>frmAdminMarcas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAgregarArticulo.resx">
+      <DependentUpon>frmAgregarArticulo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDetalleArticulo.resx">
       <DependentUpon>FrmDetalleArticulo.cs</DependentUpon>

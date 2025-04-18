@@ -79,6 +79,43 @@ namespace Negocio
             }
         }
 
+        public void agregar(Articulo nuevo)
+        {
 
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                //prueba de insert:
+                datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre,Descripcion,IdMarca, IdCategoria,Precio) values ('','','',1,1,60)");
+
+                //insert con datos desde la ventana
+                //datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) values ('" + nuevo.Codigo + "','" + nuevo.Nombre + "','" + nuevo.Descripcion + "'," + nuevo.Marca + "," + nuevo.Categoria + "," + nuevo.Precio + ")");
+
+                //pruebas extra:
+                //datos.setearConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) VALUES (" +
+                //nuevo.Codigo + ", '" +
+                //nuevo.Nombre.Replace("'", "''") + "', '" +  
+                //nuevo.Descripcion.Replace("'", "''") + "', " +
+                //nuevo.Marca + ", " +
+                //nuevo.Categoria + ", " +
+                //nuevo.Precio.ToString(System.Globalization.CultureInfo.InvariantCulture) + ")");
+
+
+                //            string consulta = "INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) VALUES ("
+                //+ nuevo.Codigo + ", '" + nuevo.Nombre + "', '" + nuevo.Descripcion + "', " + nuevo.Marca + ", " + nuevo.Categoria + ", " + nuevo.Precio + ")";
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

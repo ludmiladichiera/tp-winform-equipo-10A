@@ -29,12 +29,19 @@ namespace TPWinForm_equipo_10A
 
         private void btnAdminMarcas_Click(object sender, EventArgs e)
         {
-
+            frmAgregarArticulo ventana = new frmAgregarArticulo();
+            ventana.ShowDialog();
         }
 
         private void btnAdminArticulos_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnListadoArticulos_Click(object sender, EventArgs e)
+        {
+            FrmDetalleArticulo ventana = new FrmDetalleArticulo();
+            ventana.ShowDialog();
         }
     }
 }
