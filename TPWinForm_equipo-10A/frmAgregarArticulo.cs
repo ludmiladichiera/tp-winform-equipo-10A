@@ -74,7 +74,7 @@ namespace TPWinForm_equipo_10A
                 nuevoArticulo.Categoria = (Categoria)cboCategoria.SelectedItem;
                 nuevoArticulo.Precio = decimal.Parse(txtPrecio.Text);
 
-                negocio.agregar(nuevoArticulo);
+                negocio.agregarArticulo(nuevoArticulo);
                 MessageBox.Show("Agregado exitosamente!");
                 Close();
             }
