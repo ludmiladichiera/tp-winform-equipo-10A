@@ -69,7 +69,31 @@ namespace Negocio
             conexion.Close();
         }
 
+        public int obtenerIdArt(string codigo) 
+        {
+            int id = 0;
+            try
+            {
+                setearConsulta("SELECT Id FROM ARTICULOS WHERE Codigo = @Codigo");
+                setearParametro("@Codigo", codigo);
+                ejecutarLectura();
+                if (Lector.Read())
+                {
+                    id = (int)(Lector["Id"]);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                cerrarConexion();
+            }
+            return id;
 
+
+        }
     }
 
 
