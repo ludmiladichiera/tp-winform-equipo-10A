@@ -79,20 +79,53 @@ namespace Negocio
             }
         }
 
-            public void agregarArticulo(Articulo nuevoArticulo)
+        public int agregarArticuloYDevolverId(Articulo nuevoArticulo)
+        {
+            int idGenerado;
+            SqlConnection conexion = new SqlConnection( "server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true");
+            SqlCommand comando = new SqlCommand();
+            try
+            {
+                comando.Connection = conexion;
+                comando.CommandType = System.Data.CommandType.Text;
+                comando.CommandText = @"INSERT INTO Articulos (Codigo, Nombre, Descripcion, Precio, IdMarca, IdCategoria) 
+                                VALUES (@Codigo, @Nombre, @Descripcion, @Precio, @IdMarca, @IdCategoria);
+                                SELECT SCOPE_IDENTITY();";
+
+                comando.Parameters.AddWithValue("@Codigo", nuevoArticulo.Codigo);
+                comando.Parameters.AddWithValue("@Nombre", nuevoArticulo.Nombre);
+                comando.Parameters.AddWithValue("@Descripcion", nuevoArticulo.Descripcion);
+                comando.Parameters.AddWithValue("@Precio", nuevoArticulo.Precio);
+                comando.Parameters.AddWithValue("@IdMarca", nuevoArticulo.Marca.Id);
+                comando.Parameters.AddWithValue("@IdCategoria", nuevoArticulo.Categoria.Id);
+
+                conexion.Open();
+                idGenerado = Convert.ToInt32(comando.ExecuteScalar()); //recupero el ID generado
+
+                return idGenerado;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+        public void agregarImagenUrl(int idArticulo, List<Imagen> imagenes)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, IdCategoria, IdMarca, Precio) " +
-                                     "VALUES (@Codigo, @Nombre, @Descripcion, @IdCategoria, @IdMarca, @Precio);");
-                datos.setearParametro("@Codigo", nuevoArticulo.Codigo);
-                datos.setearParametro("@Nombre", nuevoArticulo.Nombre);
-                datos.setearParametro("@Descripcion", nuevoArticulo.Descripcion);
-                datos.setearParametro("@IdCategoria", nuevoArticulo.Categoria.Id);
-                datos.setearParametro("@IdMarca", nuevoArticulo.Marca.Id);
-                datos.setearParametro("@Precio", nuevoArticulo.Precio);
-                datos.ejecutarAccion();
+                foreach (Imagen imagen in imagenes)
+                {
+                    datos.setearConsulta("INSERT INTO IMAGENES (IdArticulo, ImagenUrl) " +
+                                         "VALUES (@IdArticulo, @ImagenUrl)");
+                    datos.setearParametro("@IdArticulo", idArticulo);
+                    datos.setearParametro("@ImagenUrl", imagen.ImagenUrl);
+                    datos.ejecutarAccion();
+                }
             }
             catch (Exception ex)
             {
@@ -103,5 +136,31 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+        public int ObtenerIdPorCodigo(string codigo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SELECT Id FROM ARTICULOS WHERE Codigo = @Codigo");
+                datos.setearParametro("@Codigo", codigo);
+                datos.ejecutarLectura();
+
+                //ver
+                if (datos.Lector.Read())
+                    return (int)datos.Lector["Id"];
+                else
+                    return -1; // No encontrado
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
     }
 }

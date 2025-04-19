@@ -70,6 +70,12 @@
     <Compile Include="frmAgregarArticulo.Designer.cs">
       <DependentUpon>frmAgregarArticulo.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAgregarImagen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAgregarImagen.Designer.cs">
+      <DependentUpon>frmAgregarImagen.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDetalleArticulo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAgregarArticulo.resx">
       <DependentUpon>frmAgregarArticulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAgregarImagen.resx">
+      <DependentUpon>frmAgregarImagen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDetalleArticulo.resx">
       <DependentUpon>FrmDetalleArticulo.cs</DependentUpon>

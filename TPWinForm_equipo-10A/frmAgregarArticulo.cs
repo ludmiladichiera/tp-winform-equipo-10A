@@ -73,8 +73,15 @@ namespace TPWinForm_equipo_10A
                     //txtUrlImagen.Text=articulo.Imagenes;
                     txtPrecio.Text=articulo.Precio.ToString();
 
+                    //try
+                    //{
+                    //    pbxArticulo.Load(txtUrlImagen.Text);
+                    //}
+                    //catch
+                    //{
+                    //    pbxArticulo.Load("https://media.istockphoto.com/id/1128826884/es/vector/ning%C3%BAn-s%C3%ADmbolo-de-vector-de-imagen-falta-icono-disponible-no-hay-galer%C3%ADa-para-este-momento.jpg?s=612x612&w=0&k=20&c=9vnjI4XI3XQC0VHfuDePO7vNJE7WDM8uzQmZJ1SnQgk=");
+                    //}
 
-                    
                 }
             }
             catch (Exception ex)
@@ -104,17 +111,17 @@ namespace TPWinForm_equipo_10A
                 //aca agregar IMAGEN- video 14
                 nuevoArticulo.Precio = decimal.Parse(txtPrecio.Text);
 
-                negocio.agregarArticulo(nuevoArticulo);
+                int nuevoId=negocio.agregarArticuloYDevolverId(nuevoArticulo);
                 MessageBox.Show("Agregado exitosamente!");
+                frmAgregarImagen frmImagen = new frmAgregarImagen(nuevoId);
+                frmImagen.ShowDialog();
+
                 Close();
             }
             catch (Exception Ex)
             {
                 MessageBox.Show(Ex.ToString());
             }
-
-
-
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -129,14 +136,14 @@ namespace TPWinForm_equipo_10A
 
         private void txtUrlImagen_Leave(object sender, EventArgs e)
         {
-            try
-            {
-                pbxArticulo.Load(txtUrlImagen.Text);
-            }
-            catch
-            {
-                pbxArticulo.Load("https://media.istockphoto.com/id/1128826884/es/vector/ning%C3%BAn-s%C3%ADmbolo-de-vector-de-imagen-falta-icono-disponible-no-hay-galer%C3%ADa-para-este-momento.jpg?s=612x612&w=0&k=20&c=9vnjI4XI3XQC0VHfuDePO7vNJE7WDM8uzQmZJ1SnQgk=");
-            }
+            //try
+            //{
+            //    pbxArticulo.Load(txtUrlImagen.Text);
+            //}
+            //catch
+            //{
+            //    pbxArticulo.Load("https://media.istockphoto.com/id/1128826884/es/vector/ning%C3%BAn-s%C3%ADmbolo-de-vector-de-imagen-falta-icono-disponible-no-hay-galer%C3%ADa-para-este-momento.jpg?s=612x612&w=0&k=20&c=9vnjI4XI3XQC0VHfuDePO7vNJE7WDM8uzQmZJ1SnQgk=");
+            //}
         }
     }
 }

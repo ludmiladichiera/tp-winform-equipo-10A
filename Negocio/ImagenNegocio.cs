@@ -10,6 +10,7 @@ namespace Negocio
 {
     public class ImagenNegocio
     {
+        
         public List<Imagen> listar(int idArticulo)
         {
             List<Imagen> lista = new List<Imagen>();
@@ -33,6 +34,27 @@ namespace Negocio
                 
 
                 return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void Agregar(Imagen imagen)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@idArticulo, @imagenUrl)");
+                datos.setearParametro("@idArticulo", imagen.IdArticulo);
+                datos.setearParametro("@imagenUrl", imagen.ImagenUrl);
+                datos.ejecutarAccion();
             }
             catch (Exception ex)
             {
