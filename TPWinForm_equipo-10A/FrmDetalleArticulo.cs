@@ -57,5 +57,10 @@ namespace TPWinForm_equipo_10A
         {
 
         }
+
+        private void dgvArticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

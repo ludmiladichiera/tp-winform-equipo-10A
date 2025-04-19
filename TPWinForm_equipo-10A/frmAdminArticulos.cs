@@ -32,7 +32,7 @@ namespace TPWinForm_equipo_10A
         private void btnAdminMarcas_Click(object sender, EventArgs e) //agregar articulo (no me deja cambiar el nombre :( )
         {
             frmAgregarArticulo ventana = new frmAgregarArticulo();
-            ventana.ShowDialog();
+            ventana.Show();
         }
 
         private void btnAdminArticulos_Click(object sender, EventArgs e)
@@ -43,17 +43,53 @@ namespace TPWinForm_equipo_10A
         private void btnListadoArticulos_Click(object sender, EventArgs e)
         {
             FrmDetalleArticulo ventana = new FrmDetalleArticulo();
-            ventana.ShowDialog();
+            ventana.Show();
         }
+
+        //para MODIFICAR con los parametros cargados:
 
         private void btnModificarArticulos_Click(object sender, EventArgs e)
         {
-            //Articulo seleccionado;
-            //seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            Articulo seleccionado;
+            seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
 
             
-            frmAgregarArticulo ventana = new frmAgregarArticulo();
-            ventana.ShowDialog();
+            frmAgregarArticulo modificar = new frmAgregarArticulo(seleccionado);
+            modificar.ShowDialog();
         }
+
+
+
+        private void frmAdminArticulos_Load(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            //listaArticulo = negocio.listar();
+            dgvArticulos.DataSource = negocio.listar();
+        }
+
+
+        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvArticulos.CurrentRow != null)
+            {
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+                string imagenUrl = seleccionado.Imagenes != null && seleccionado.Imagenes.Count > 0
+                    ? seleccionado.Imagenes[0].ImagenUrl
+                    : "https://media.istockphoto.com/id/1128826884/es/vector/ning%C3%BAn-s%C3%ADmbolo-de-vector-de-imagen-falta-icono-disponible-no-hay-galer%C3%ADa-para-este-momento.jpg?s=612x612&w=0&k=20&c=9vnjI4XI3XQC0VHfuDePO7vNJE7WDM8uzQmZJ1SnQgk=";
+
+                try
+                {
+                    pbxArticulo.Load(imagenUrl);
+                }
+                catch
+                {
+
+                    pbxArticulo.Load("https://media.istockphoto.com/id/1128826884/es/vector/ning%C3%BAn-s%C3%ADmbolo-de-vector-de-imagen-falta-icono-disponible-no-hay-galer%C3%ADa-para-este-momento.jpg?s=612x612&w=0&k=20&c=9vnjI4XI3XQC0VHfuDePO7vNJE7WDM8uzQmZJ1SnQgk=");
+                }
+            }
+        }
+
+        
     }
 }

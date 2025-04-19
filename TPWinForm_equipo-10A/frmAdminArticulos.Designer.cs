@@ -35,6 +35,10 @@
             this.btnListadoArticulos = new System.Windows.Forms.Button();
             this.btnEliminarArticulos = new System.Windows.Forms.Button();
             this.btnDetalleArticulo = new System.Windows.Forms.Button();
+            this.dgvArticulos = new System.Windows.Forms.DataGridView();
+            this.pbxArticulo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTituloArticulos
@@ -42,7 +46,7 @@
             this.lblTituloArticulos.AccessibleName = "Menu";
             this.lblTituloArticulos.AutoSize = true;
             this.lblTituloArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloArticulos.Location = new System.Drawing.Point(41, 97);
+            this.lblTituloArticulos.Location = new System.Drawing.Point(217, 286);
             this.lblTituloArticulos.Name = "lblTituloArticulos";
             this.lblTituloArticulos.Size = new System.Drawing.Size(479, 31);
             this.lblTituloArticulos.TabIndex = 9;
@@ -52,7 +56,7 @@
             // btnAgregarArticulo
             // 
             this.btnAgregarArticulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarArticulo.Location = new System.Drawing.Point(131, 165);
+            this.btnAgregarArticulo.Location = new System.Drawing.Point(307, 340);
             this.btnAgregarArticulo.Name = "btnAgregarArticulo";
             this.btnAgregarArticulo.Size = new System.Drawing.Size(289, 37);
             this.btnAgregarArticulo.TabIndex = 11;
@@ -63,7 +67,7 @@
             // btnBusquedaArticulos
             // 
             this.btnBusquedaArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBusquedaArticulos.Location = new System.Drawing.Point(131, 208);
+            this.btnBusquedaArticulos.Location = new System.Drawing.Point(307, 383);
             this.btnBusquedaArticulos.Name = "btnBusquedaArticulos";
             this.btnBusquedaArticulos.Size = new System.Drawing.Size(289, 37);
             this.btnBusquedaArticulos.TabIndex = 12;
@@ -73,7 +77,7 @@
             // btnModificarArticulos
             // 
             this.btnModificarArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificarArticulos.Location = new System.Drawing.Point(131, 251);
+            this.btnModificarArticulos.Location = new System.Drawing.Point(307, 426);
             this.btnModificarArticulos.Name = "btnModificarArticulos";
             this.btnModificarArticulos.Size = new System.Drawing.Size(289, 37);
             this.btnModificarArticulos.TabIndex = 13;
@@ -84,7 +88,7 @@
             // btnListadoArticulos
             // 
             this.btnListadoArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnListadoArticulos.Location = new System.Drawing.Point(131, 294);
+            this.btnListadoArticulos.Location = new System.Drawing.Point(307, 469);
             this.btnListadoArticulos.Name = "btnListadoArticulos";
             this.btnListadoArticulos.Size = new System.Drawing.Size(289, 37);
             this.btnListadoArticulos.TabIndex = 14;
@@ -95,7 +99,7 @@
             // btnEliminarArticulos
             // 
             this.btnEliminarArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminarArticulos.Location = new System.Drawing.Point(131, 337);
+            this.btnEliminarArticulos.Location = new System.Drawing.Point(307, 512);
             this.btnEliminarArticulos.Name = "btnEliminarArticulos";
             this.btnEliminarArticulos.Size = new System.Drawing.Size(289, 37);
             this.btnEliminarArticulos.TabIndex = 15;
@@ -105,18 +109,49 @@
             // btnDetalleArticulo
             // 
             this.btnDetalleArticulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDetalleArticulo.Location = new System.Drawing.Point(131, 380);
+            this.btnDetalleArticulo.Location = new System.Drawing.Point(307, 555);
             this.btnDetalleArticulo.Name = "btnDetalleArticulo";
             this.btnDetalleArticulo.Size = new System.Drawing.Size(289, 37);
             this.btnDetalleArticulo.TabIndex = 16;
             this.btnDetalleArticulo.Text = "Ver detalle de un articulo";
             this.btnDetalleArticulo.UseVisualStyleBackColor = true;
             // 
+            // dgvArticulos
+            // 
+            this.dgvArticulos.BackgroundColor = System.Drawing.Color.Ivory;
+            this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvArticulos.Location = new System.Drawing.Point(11, 11);
+            this.dgvArticulos.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvArticulos.MultiSelect = false;
+            this.dgvArticulos.Name = "dgvArticulos";
+            this.dgvArticulos.RowHeadersWidth = 51;
+            this.dgvArticulos.RowTemplate.Height = 24;
+            this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvArticulos.Size = new System.Drawing.Size(610, 250);
+            this.dgvArticulos.TabIndex = 17;
+            this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
+            // 
+            // pbxArticulo
+            // 
+            this.pbxArticulo.BackColor = System.Drawing.Color.Ivory;
+            this.pbxArticulo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbxArticulo.Location = new System.Drawing.Point(638, 11);
+            this.pbxArticulo.Margin = new System.Windows.Forms.Padding(2);
+            this.pbxArticulo.Name = "pbxArticulo";
+            this.pbxArticulo.Size = new System.Drawing.Size(274, 250);
+            this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxArticulo.TabIndex = 18;
+            this.pbxArticulo.TabStop = false;
+            // 
             // frmAdminArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 489);
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.ClientSize = new System.Drawing.Size(923, 615);
+            this.Controls.Add(this.pbxArticulo);
+            this.Controls.Add(this.dgvArticulos);
             this.Controls.Add(this.btnDetalleArticulo);
             this.Controls.Add(this.btnEliminarArticulos);
             this.Controls.Add(this.btnListadoArticulos);
@@ -124,11 +159,13 @@
             this.Controls.Add(this.btnBusquedaArticulos);
             this.Controls.Add(this.btnAgregarArticulo);
             this.Controls.Add(this.lblTituloArticulos);
-            this.MaximumSize = new System.Drawing.Size(600, 528);
             this.MinimumSize = new System.Drawing.Size(600, 528);
             this.Name = "frmAdminArticulos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrador de Articulos";
+            this.Load += new System.EventHandler(this.frmAdminArticulos_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,5 +179,7 @@
         private System.Windows.Forms.Button btnListadoArticulos;
         private System.Windows.Forms.Button btnEliminarArticulos;
         private System.Windows.Forms.Button btnDetalleArticulo;
+        private System.Windows.Forms.DataGridView dgvArticulos;
+        private System.Windows.Forms.PictureBox pbxArticulo;
     }
 }

@@ -69,7 +69,7 @@
             // 
             this.txtTituloAgregarArticulo.AutoSize = true;
             this.txtTituloAgregarArticulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTituloAgregarArticulo.Location = new System.Drawing.Point(142, 34);
+            this.txtTituloAgregarArticulo.Location = new System.Drawing.Point(97, 35);
             this.txtTituloAgregarArticulo.Name = "txtTituloAgregarArticulo";
             this.txtTituloAgregarArticulo.Size = new System.Drawing.Size(233, 31);
             this.txtTituloAgregarArticulo.TabIndex = 1;

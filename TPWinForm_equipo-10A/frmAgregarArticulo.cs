@@ -14,7 +14,14 @@ namespace TPWinForm_equipo_10A
 {
     public partial class frmAgregarArticulo : Form
     {
+        private Articulo articulo = null;
         public frmAgregarArticulo()
+        {
+            InitializeComponent();
+        }
+
+        //para modificar:
+        public frmAgregarArticulo(Articulo articulo)
         {
             InitializeComponent();
         }
