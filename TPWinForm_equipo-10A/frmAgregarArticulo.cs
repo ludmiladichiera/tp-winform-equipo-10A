@@ -24,6 +24,7 @@ namespace TPWinForm_equipo_10A
         public frmAgregarArticulo(Articulo articulo)
         {
             InitializeComponent();
+            this.articulo = articulo;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -62,6 +63,19 @@ namespace TPWinForm_equipo_10A
                 cboCategoria.DataSource = categoriaNegocio.listar();
                 cboMarca.DataSource = marcaNegocio.listar();
 
+                if (articulo != null)
+                {
+                    txtCodigo.Text=articulo.Codigo;
+                    txtNombre.Text=articulo.Nombre;
+                    txtDescripcion.Text=articulo.Descripcion;
+                    cboMarca.SelectedItem=articulo.Marca;
+                    cboCategoria.SelectedItem=articulo.Categoria;
+                    //txtUrlImagen.Text=articulo.Imagenes;
+                    txtPrecio.Text=articulo.Precio.ToString();
+
+
+                    
+                }
             }
             catch (Exception ex)
             {
