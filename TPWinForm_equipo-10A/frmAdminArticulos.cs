@@ -33,6 +33,7 @@ namespace TPWinForm_equipo_10A
         {
             frmAgregarArticulo ventana = new frmAgregarArticulo();
             ventana.Show();
+            cargarArticulos();
         }
 
         private void btnAdminArticulos_Click(object sender, EventArgs e)
@@ -44,6 +45,7 @@ namespace TPWinForm_equipo_10A
         {
             FrmDetalleArticulo ventana = new FrmDetalleArticulo();
             ventana.Show();
+            cargarArticulos();
         }
 
         //para MODIFICAR con los parametros cargados:
@@ -56,15 +58,14 @@ namespace TPWinForm_equipo_10A
             
             frmAgregarArticulo modificar = new frmAgregarArticulo(seleccionado);
             modificar.ShowDialog();
+            cargarArticulos();
         }
 
 
 
         private void frmAdminArticulos_Load(object sender, EventArgs e)
         {
-            ArticuloNegocio negocio = new ArticuloNegocio();
-            //listaArticulo = negocio.listar();
-            dgvArticulos.DataSource = negocio.listar();
+            cargarArticulos();
         }
 
 
@@ -90,6 +91,30 @@ namespace TPWinForm_equipo_10A
             }
         }
 
-        
+        private void btnEliminarArticulos_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            Articulo seleccionado;
+            try
+            {
+                seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                negocio.EliminarArticulo(seleccionado.Id);
+                MessageBox.Show("Articulo eliminado correctamente");
+                cargarArticulos();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw;
+            }
+        }
+
+        private void cargarArticulos()
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            dgvArticulos.DataSource = null;
+            dgvArticulos.DataSource = negocio.listar();
+        }
     }
 }

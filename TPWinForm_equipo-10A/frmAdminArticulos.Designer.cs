@@ -99,12 +99,13 @@
             // btnEliminarArticulos
             // 
             this.btnEliminarArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminarArticulos.Location = new System.Drawing.Point(307, 512);
+            this.btnEliminarArticulos.Location = new System.Drawing.Point(264, 512);
             this.btnEliminarArticulos.Name = "btnEliminarArticulos";
-            this.btnEliminarArticulos.Size = new System.Drawing.Size(289, 37);
+            this.btnEliminarArticulos.Size = new System.Drawing.Size(357, 37);
             this.btnEliminarArticulos.TabIndex = 15;
-            this.btnEliminarArticulos.Text = "Eliminar articulos";
+            this.btnEliminarArticulos.Text = "Eliminar articulo seleccionado";
             this.btnEliminarArticulos.UseVisualStyleBackColor = true;
+            this.btnEliminarArticulos.Click += new System.EventHandler(this.btnEliminarArticulos_Click);
             // 
             // btnDetalleArticulo
             // 

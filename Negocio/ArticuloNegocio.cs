@@ -231,22 +231,36 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-        public void Eliminar(Articulo Eliminar)
+        //public void Eliminar(Articulo Eliminar)
+        //{
+        //    AccesoDatos datos = new AccesoDatos();
+        //    try
+        //    {
+        //        string consulta = "DELETE FROM ARTICULOS where Codigo = '" + Eliminar.Codigo + "'";
+        //        datos.setearConsulta(consulta);
+        //        datos.ejecutarAccion();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    finally { datos.cerrarConexion(); }
+        //}
+        public void EliminarArticulo( int id )
         {
-            AccesoDatos datos = new AccesoDatos();
             try
             {
-                string consulta = "DELETE FROM ARTICULOS where Codigo = '" + Eliminar.Codigo + "'";
-                datos.setearConsulta(consulta);
+                AccesoDatos datos = new AccesoDatos();
+                datos.setearConsulta("delete from ARTICULOS where id= @id");
+                datos.setearParametro("@id", id);
                 datos.ejecutarAccion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
-            }
-            finally { datos.cerrarConexion(); }
-        }
 
+                throw;
+            }
+        }
 
     }
 }
