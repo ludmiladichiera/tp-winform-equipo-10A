@@ -111,11 +111,22 @@ namespace TPWinForm_equipo_10A
                 //aca agregar IMAGEN- video 14
                 nuevoArticulo.Precio = decimal.Parse(txtPrecio.Text);
 
+                nuevoArticulo.Imagenes = new List<Imagen>();
+
                 if (articulo != null && articulo.Id != 0)
                 {
                     nuevoArticulo.Id = articulo.Id;
                     negocio.Modificar(nuevoArticulo);
                     MessageBox.Show("Artículo modificado exitosamente!");
+
+                    DialogResult resultado = MessageBox.Show("¿Quieres modificar las imágenes del artículo?", "Modificar Imágenes", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (resultado == DialogResult.Yes)
+                    {
+
+                        frmAgregarImagen frmImagen = new frmAgregarImagen(nuevoArticulo.Id);
+                        frmImagen.ShowDialog();
+                    }
+
                 }
                 else
                 {

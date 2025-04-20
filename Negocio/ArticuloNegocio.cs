@@ -180,7 +180,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             modificarArticulo(modificar);
             int idArticulo = datos.obtenerIdArt(modificar.Codigo);
-            //modificarImagenUrl(idArticulo, modificar.Imagenes);
+            modificarImagenUrl(idArticulo, modificar.Imagenes);
         }
         public void modificarArticulo(Articulo modificar)
         {
