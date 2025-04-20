@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Negocio;
+using Dominio;
 
 namespace TPWinForm_equipo_10A
 {
@@ -21,11 +23,37 @@ namespace TPWinForm_equipo_10A
         {
             frmAgregarMarcas ventana = new frmAgregarMarcas();
             ventana.ShowDialog();
+            cargarArticulos();
         }
 
         private void btnEliminarMarcas_Click(object sender, EventArgs e)
         {
-
+            MarcaNegocio negocio = new MarcaNegocio();
+            Marca seleccionado;
+            try
+            {
+                seleccionado=(Marca)dgvMarcas.CurrentRow.DataBoundItem;
+                negocio.eliminarMarcas(seleccionado.Id);
+                MessageBox.Show("Marca eliminada correctamente");
+                cargarArticulos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw;
+            }
         }
+        private void frmAdminMarcas_Load(object sender, EventArgs e)
+        {
+            cargarArticulos();
+        }
+        private void cargarArticulos()
+        {
+            MarcaNegocio negocio = new MarcaNegocio();
+            dgvMarcas.DataSource = null;
+            dgvMarcas.DataSource = negocio.listar();
+        }
+
+       
     }
 }

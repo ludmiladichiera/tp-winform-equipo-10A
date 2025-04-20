@@ -60,12 +60,11 @@ namespace Negocio
             }
         }
 
-        public void eliminar(int id)
+        public void eliminarMarcas(int id)
         {
-            AccesoDatos datos = new AccesoDatos();
-
             try
             {
+                AccesoDatos datos = new AccesoDatos();
                 datos.setearConsulta("DELETE FROM MARCAS WHERE id = @id");
                 datos.setearParametro("@id", id);
                 datos.ejecutarAccion();
@@ -73,10 +72,6 @@ namespace Negocio
             catch (Exception ex)
             {
                 throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
             }
         }
     }
