@@ -1,6 +1,6 @@
 ﻿namespace TPWinForm_equipo_10A
 {
-    partial class frmAgregarMarcas
+    partial class frmAgregarMarca
     {
         /// <summary>
         /// Required designer variable.
@@ -82,7 +82,7 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Agregar marca";
             // 
-            // frmAgregarMarcas
+            // frmAgregarMarca
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -92,8 +92,9 @@
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "frmAgregarMarcas";
+            this.Name = "frmAgregarMarca";
             this.Text = "frmAgregarMarcas";
+            this.Load += new System.EventHandler(this.frmAgregarMarca_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

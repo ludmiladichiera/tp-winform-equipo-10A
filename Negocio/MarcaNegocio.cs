@@ -60,6 +60,33 @@ namespace Negocio
             }
         }
 
+        public void Modificar(Marca modificar)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            modificarMarca(modificar);
+        }
+        public void modificarMarca(Marca modificar)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("update MARCAS set Descripcion= @Descripcion  where Id=@Id");
+                datos.setearParametro("@Descripcion", modificar.Descripcion);
+                datos.setearParametro("@Id", modificar.Id);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
         public void eliminarMarcas(int id)
         {
             try

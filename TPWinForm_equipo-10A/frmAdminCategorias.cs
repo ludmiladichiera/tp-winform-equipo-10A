@@ -23,7 +23,7 @@ namespace TPWinForm_equipo_10A
         {
             frmAgregarCategoria ventana = new frmAgregarCategoria();
             ventana.ShowDialog();
-            cargarArticulos();
+            cargarDGV();
         }
 
         private void btnEliminarCategorias_Click(object sender, EventArgs e)
@@ -35,7 +35,7 @@ namespace TPWinForm_equipo_10A
                 seleccionado = (Categoria)dgvCategorias.CurrentRow.DataBoundItem;
                 negocio.eliminarCategorias(seleccionado.Id);
                 MessageBox.Show("Marca eliminada correctamente");
-                cargarArticulos();
+                cargarDGV();
             }
             catch (Exception ex)
             {
@@ -45,15 +45,24 @@ namespace TPWinForm_equipo_10A
         }
         private void frmAdminCategorias_Load(object sender, EventArgs e)
         {
-            cargarArticulos();
+            cargarDGV();
         }
 
-        private void cargarArticulos()
+
+        private void btnModificarCategorias_Click(object sender, EventArgs e)
+        {
+            Categoria seleccionado;
+            seleccionado = (Categoria)dgvCategorias.CurrentRow.DataBoundItem;
+
+            frmAgregarCategoria modificar = new frmAgregarCategoria(seleccionado);
+            modificar.ShowDialog();
+            cargarDGV();
+        }
+        private void cargarDGV()
         {
             CategoriaNegocio negocio = new CategoriaNegocio();
             dgvCategorias.DataSource = null;
             dgvCategorias.DataSource = negocio.listar();
         }
-
     }
 }

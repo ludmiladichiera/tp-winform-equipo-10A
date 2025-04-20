@@ -58,6 +58,7 @@
             this.btnModificarMarcas.TabIndex = 26;
             this.btnModificarMarcas.Text = "Modificar marcas";
             this.btnModificarMarcas.UseVisualStyleBackColor = true;
+            this.btnModificarMarcas.Click += new System.EventHandler(this.btnModificarMarcas_Click);
             // 
             // btnBusquedaMarcas
             // 

@@ -58,6 +58,7 @@
             this.btnModificarCategorias.TabIndex = 32;
             this.btnModificarCategorias.Text = "Modificar categorias";
             this.btnModificarCategorias.UseVisualStyleBackColor = true;
+            this.btnModificarCategorias.Click += new System.EventHandler(this.btnModificarCategorias_Click);
             // 
             // btnBusquedaCategorias
             // 

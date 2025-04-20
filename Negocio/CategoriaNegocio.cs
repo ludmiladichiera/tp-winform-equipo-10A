@@ -61,7 +61,32 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+        public void Modificar(Categoria modificar)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            modificarCategoria(modificar);
+        }
+        public void modificarCategoria(Categoria modificar)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("update CATEGORIAS set Descripcion= @Descripcion  where Id=@Id");
+                datos.setearParametro("@Descripcion", modificar.Descripcion);
+                datos.setearParametro("@Id", modificar.Id);
 
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
         public void eliminarCategorias(int id)
         {
 
