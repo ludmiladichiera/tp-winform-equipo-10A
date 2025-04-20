@@ -25,6 +25,8 @@ namespace TPWinForm_equipo_10A
         {
             InitializeComponent();
             this.articulo = articulo;
+            txtTituloAgregarArticulo.Text = "Modificar articulo";
+            Text = "Modificar Articulo"; //titulo de ventana
         }
 
         private void label1_Click(object sender, EventArgs e)
