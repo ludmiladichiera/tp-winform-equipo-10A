@@ -121,5 +121,12 @@ namespace TPWinForm_equipo_10A
         {
 
         }
+
+        private void btnBusquedaArticulos_Click(object sender, EventArgs e)
+        {
+            frmBusqueda ventana = new frmBusqueda();
+            ventana.ShowDialog();
+            //cargarDGV();
+        }
     }
 }

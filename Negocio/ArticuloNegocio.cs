@@ -261,6 +261,145 @@ namespace Negocio
                 throw;
             }
         }
+        public List<Articulo> filtrar(string campo, string criterio, string filtro)
+        {
+            List<Articulo> lista = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
 
+            try
+            {
+                string consulta = @"SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio,
+                    M.Descripcion AS Marca, C.Descripcion AS Categoria,
+                    MIN(I.ImagenUrl) AS ImagenesUrl
+                    FROM ARTICULOS A
+                    JOIN MARCAS M ON A.IdMarca = M.Id
+                    LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id
+                    LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo
+                    WHERE ";
+
+                switch (campo)
+                {
+                    case "Código":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "A.Codigo LIKE '" + filtro + "%'";
+                                break;
+                            case "Termina con":
+                                consulta += "A.Codigo LIKE '%" + filtro + "'";
+                                break;
+                            default:
+                                consulta += "A.Codigo LIKE '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
+
+                    case "Nombre":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "A.Nombre LIKE '" + filtro + "%'";
+                                break;
+                            case "Termina con":
+                                consulta += "A.Nombre LIKE '%" + filtro + "'";
+                                break;
+                            default:
+                                consulta += "A.Nombre LIKE '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
+
+                    case "Descripción":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "A.Descripcion LIKE '" + filtro + "%'";
+                                break;
+                            case "Termina con":
+                                consulta += "A.Descripcion LIKE '%" + filtro + "'";
+                                break;
+                            default:
+                                consulta += "A.Descripcion LIKE '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
+
+                    case "Marca":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "M.Descripcion LIKE '" + filtro + "%'";
+                                break;
+                            case "Termina con":
+                                consulta += "M.Descripcion LIKE '%" + filtro + "'";
+                                break;
+                            default:
+                                consulta += "M.Descripcion LIKE '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
+
+                    case "Categoría":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "C.Descripcion LIKE '" + filtro + "%'";
+                                break;
+                            case "Termina con":
+                                consulta += "C.Descripcion LIKE '%" + filtro + "'";
+                                break;
+                            default:
+                                consulta += "C.Descripcion LIKE '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
+
+                    case "Precio":
+                        switch (criterio)
+                        {
+                            case "Mayor a":
+                                consulta += "A.Precio > " + filtro;
+                                break;
+                            case "Menor a":
+                                consulta += "A.Precio < " + filtro;
+                                break;
+                            default:
+                                consulta += "A.Precio = " + filtro;
+                                break;
+                        }
+                        break;
+                }
+
+                consulta += @" GROUP BY A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio, M.Descripcion, C.Descripcion";
+
+                datos.setearConsulta(consulta);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Codigo = datos.Lector["Codigo"].ToString();
+                    aux.Nombre = datos.Lector["Nombre"].ToString();
+                    aux.Descripcion = datos.Lector["Descripcion"].ToString();
+                    aux.Precio = (decimal)datos.Lector["Precio"];
+
+                    aux.Marca = new Marca { Descripcion = datos.Lector["Marca"].ToString() };
+                    aux.Categoria = new Categoria { Descripcion = datos.Lector["Categoria"].ToString() };
+
+                    aux.Imagenes = new List<Imagen>();
+                    if (!(datos.Lector["ImagenesUrl"] is DBNull))
+                        aux.Imagenes.Add(new Imagen(datos.Lector["ImagenesUrl"].ToString()));
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
