@@ -16,5 +16,11 @@ namespace TPWinForm_equipo_10A
         {
             InitializeComponent();
         }
+
+        private void btnAgregarCategorias_Click(object sender, EventArgs e)
+        {
+            frmAgregarCategoria ventana = new frmAgregarCategoria();
+            ventana.ShowDialog();
+        }
     }
 }

@@ -116,5 +116,10 @@ namespace TPWinForm_equipo_10A
             dgvArticulos.DataSource = null;
             dgvArticulos.DataSource = negocio.listar();
         }
+
+        private void dgvArticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

@@ -16,5 +16,16 @@ namespace TPWinForm_equipo_10A
         {
             InitializeComponent();
         }
+
+        private void btnAgregarMarcas_Click(object sender, EventArgs e)
+        {
+            frmAgregarMarcas ventana = new frmAgregarMarcas();
+            ventana.ShowDialog();
+        }
+
+        private void btnEliminarMarcas_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
