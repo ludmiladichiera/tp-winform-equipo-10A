@@ -39,6 +39,8 @@ namespace Negocio
                 while (lector.Read()) //posiciona el puntero
                 {
                     Articulo aux = new Articulo();
+
+                    aux.Id = (int)lector["Id"];
                     aux.Codigo = (string)lector["Codigo"];
                     aux.Nombre = (string)lector["Nombre"];
                     aux.Descripcion = (string)lector["Descripcion"];
@@ -178,7 +180,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             modificarArticulo(modificar);
             int idArticulo = datos.obtenerIdArt(modificar.Codigo);
-            modificarImagenUrl(idArticulo, modificar.Imagenes);
+            //modificarImagenUrl(idArticulo, modificar.Imagenes);
         }
         public void modificarArticulo(Articulo modificar)
         {

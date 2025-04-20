@@ -111,10 +111,25 @@ namespace TPWinForm_equipo_10A
                 //aca agregar IMAGEN- video 14
                 nuevoArticulo.Precio = decimal.Parse(txtPrecio.Text);
 
-                int nuevoId=negocio.agregarArticuloYDevolverId(nuevoArticulo);
-                MessageBox.Show("Agregado exitosamente!");
-                frmAgregarImagen frmImagen = new frmAgregarImagen(nuevoId);
-                frmImagen.ShowDialog();
+                if (articulo != null && articulo.Id != 0)
+                {
+                    nuevoArticulo.Id = articulo.Id;
+                    negocio.Modificar(nuevoArticulo);
+                    MessageBox.Show("Artículo modificado exitosamente!");
+                }
+                else
+                {
+                    int nuevoId = negocio.agregarArticuloYDevolverId(nuevoArticulo);
+                    MessageBox.Show("Agregado exitosamente!");
+                    frmAgregarImagen frmImagen = new frmAgregarImagen(nuevoId);
+                    frmImagen.ShowDialog();
+                }
+
+
+                //int nuevoId =negocio.agregarArticuloYDevolverId(nuevoArticulo);
+                // MessageBox.Show("Agregado exitosamente!");
+                //frmAgregarImagen frmImagen = new frmAgregarImagen(nuevoId);
+                //frmImagen.ShowDialog();
 
                 Close();
             }

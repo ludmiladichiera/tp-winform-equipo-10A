@@ -77,7 +77,7 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(213, 156);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(337, 22);
             this.txtNombre.TabIndex = 1;
@@ -116,7 +116,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(213, 188);
-            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(337, 22);
             this.txtDescripcion.TabIndex = 2;
@@ -146,7 +146,7 @@
             // 
             this.cboMarca.FormattingEnabled = true;
             this.cboMarca.Location = new System.Drawing.Point(213, 220);
-            this.cboMarca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboMarca.Margin = new System.Windows.Forms.Padding(4);
             this.cboMarca.Name = "cboMarca";
             this.cboMarca.Size = new System.Drawing.Size(337, 24);
             this.cboMarca.TabIndex = 3;
@@ -156,7 +156,7 @@
             // 
             this.cboCategoria.FormattingEnabled = true;
             this.cboCategoria.Location = new System.Drawing.Point(213, 254);
-            this.cboCategoria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboCategoria.Margin = new System.Windows.Forms.Padding(4);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(337, 24);
             this.cboCategoria.TabIndex = 4;
@@ -164,11 +164,11 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(213, 319);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 28);
             this.button1.TabIndex = 6;
-            this.button1.Text = "Agegar";
+            this.button1.Text = "Aceptar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -185,7 +185,7 @@
             // txtPrecio
             // 
             this.txtPrecio.Location = new System.Drawing.Point(213, 287);
-            this.txtPrecio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPrecio.Margin = new System.Windows.Forms.Padding(4);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(337, 22);
             this.txtPrecio.TabIndex = 5;
@@ -198,7 +198,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Location = new System.Drawing.Point(344, 319);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(100, 28);
             this.btnCancelar.TabIndex = 7;
@@ -219,7 +219,7 @@
             // txtCodigo
             // 
             this.txtCodigo.Location = new System.Drawing.Point(213, 124);
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(337, 22);
             this.txtCodigo.TabIndex = 0;
@@ -246,7 +246,7 @@
             this.Controls.Add(this.txtTituloAgregarArticulo);
             this.Controls.Add(this.btnNombre);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(795, 484);
             this.Name = "frmAgregarArticulo";
             this.Text = "Agregar Articulo";
