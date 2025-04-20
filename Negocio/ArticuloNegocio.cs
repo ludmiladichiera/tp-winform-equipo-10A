@@ -269,112 +269,81 @@ namespace Negocio
             try
             {
                 string consulta = @"SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio,
-                    M.Descripcion AS Marca, C.Descripcion AS Categoria,
-                    MIN(I.ImagenUrl) AS ImagenesUrl
-                    FROM ARTICULOS A
-                    JOIN MARCAS M ON A.IdMarca = M.Id
-                    LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id
-                    LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo
-                    WHERE ";
+                            M.Descripcion AS Marca, C.Descripcion AS Categoria,
+                            MIN(I.ImagenUrl) AS ImagenesUrl
+                            FROM ARTICULOS A
+                            JOIN MARCAS M ON A.IdMarca = M.Id
+                            LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id
+                            LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo
+                            WHERE ";
 
-                switch (campo)
+                // Añadir el filtro correspondiente según el campo
+                if (campo == "Codigo")
                 {
-                    case "Código":
-                        switch (criterio)
-                        {
-                            case "Comienza con":
-                                consulta += "A.Codigo LIKE '" + filtro + "%'";
-                                break;
-                            case "Termina con":
-                                consulta += "A.Codigo LIKE '%" + filtro + "'";
-                                break;
-                            default:
-                                consulta += "A.Codigo LIKE '%" + filtro + "%'";
-                                break;
-                        }
-                        break;
-
-                    case "Nombre":
-                        switch (criterio)
-                        {
-                            case "Comienza con":
-                                consulta += "A.Nombre LIKE '" + filtro + "%'";
-                                break;
-                            case "Termina con":
-                                consulta += "A.Nombre LIKE '%" + filtro + "'";
-                                break;
-                            default:
-                                consulta += "A.Nombre LIKE '%" + filtro + "%'";
-                                break;
-                        }
-                        break;
-
-                    case "Descripción":
-                        switch (criterio)
-                        {
-                            case "Comienza con":
-                                consulta += "A.Descripcion LIKE '" + filtro + "%'";
-                                break;
-                            case "Termina con":
-                                consulta += "A.Descripcion LIKE '%" + filtro + "'";
-                                break;
-                            default:
-                                consulta += "A.Descripcion LIKE '%" + filtro + "%'";
-                                break;
-                        }
-                        break;
-
-                    case "Marca":
-                        switch (criterio)
-                        {
-                            case "Comienza con":
-                                consulta += "M.Descripcion LIKE '" + filtro + "%'";
-                                break;
-                            case "Termina con":
-                                consulta += "M.Descripcion LIKE '%" + filtro + "'";
-                                break;
-                            default:
-                                consulta += "M.Descripcion LIKE '%" + filtro + "%'";
-                                break;
-                        }
-                        break;
-
-                    case "Categoría":
-                        switch (criterio)
-                        {
-                            case "Comienza con":
-                                consulta += "C.Descripcion LIKE '" + filtro + "%'";
-                                break;
-                            case "Termina con":
-                                consulta += "C.Descripcion LIKE '%" + filtro + "'";
-                                break;
-                            default:
-                                consulta += "C.Descripcion LIKE '%" + filtro + "%'";
-                                break;
-                        }
-                        break;
-
-                    case "Precio":
+                    consulta += "A.Codigo LIKE @filtro";
+                }
+                else if (campo == "Nombre")
+                {
+                    consulta += "A.Nombre LIKE @filtro";
+                }
+                else if (campo == "Descripcion")
+                {
+                    consulta += "A.Descripcion LIKE @filtro";
+                }
+                else if (campo == "Marca")
+                {
+                    consulta += "M.Descripcion LIKE @filtro";
+                }
+                else if (campo == "Categoria")
+                {
+                    consulta += "C.Descripcion LIKE @filtro";
+                }
+                else if (campo == "Precio")
+                {
+                    // Asegurarse de que el filtro sea numérico en el caso de "Precio"
+                    if (decimal.TryParse(filtro, out decimal precio))
+                    {
                         switch (criterio)
                         {
                             case "Mayor a":
-                                consulta += "A.Precio > " + filtro;
+                                consulta += "A.Precio > @filtro";
                                 break;
                             case "Menor a":
-                                consulta += "A.Precio < " + filtro;
+                                consulta += "A.Precio < @filtro";
                                 break;
                             default:
-                                consulta += "A.Precio = " + filtro;
+                                consulta += "A.Precio = @filtro";
                                 break;
                         }
-                        break;
+                    }
+                    else
+                    {
+                        throw new ArgumentException("El filtro para el precio debe ser un número válido.");
+                    }
                 }
 
-                consulta += @" GROUP BY A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio, M.Descripcion, C.Descripcion";
+                // Se completa el GROUP BY
+                consulta += " GROUP BY A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio, M.Descripcion, C.Descripcion";
 
+                // Establecer la consulta
                 datos.setearConsulta(consulta);
+
+                // Agregar el parámetro @filtro
+                if (campo == "Precio")
+                {
+                    // Si es un valor numérico, lo pasamos como parámetro directamente
+                    datos.setearParametro("@filtro", filtro);
+                }
+                else
+                {
+                    // Si no es precio, agregamos el filtro como un valor con % para LIKE
+                    datos.setearParametro("@filtro", "%" + filtro + "%");
+                }
+
+                // Ejecutar la lectura
                 datos.ejecutarLectura();
 
+                // Leer los datos obtenidos
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
