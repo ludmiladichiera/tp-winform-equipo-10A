@@ -71,22 +71,37 @@ namespace TPWinForm_equipo_10A
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
 
-
             try
             {
+                if (cboCampo.SelectedItem == null || cboCriterio.SelectedItem == null)
+                {
+                    MessageBox.Show("Por favor, completa los datos");
+                    return;
+                }
+
                 string campo = cboCampo.SelectedItem.ToString();
                 string criterio = cboCriterio.SelectedItem.ToString();
                 string filtro = txtFiltro.Text;
-                dgvArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
 
+                // Validación especial si es campo "Precio"
+                if (campo == "Precio")
+                {
+                    if (!decimal.TryParse(filtro, out _))
+                    {
+                        MessageBox.Show("Por favor, ingresá un valor válido", "Valor inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+
+                dgvArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.ToString());
             }
-
         }
+
+        
 
         private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
