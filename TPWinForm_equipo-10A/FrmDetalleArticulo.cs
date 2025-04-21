@@ -62,5 +62,15 @@ namespace TPWinForm_equipo_10A
         {
 
         }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
