@@ -16,63 +16,63 @@ namespace TPWinForm_equipo_10A
     public partial class frmAgregarCategoria : Form
     {
         private Categoria categoria = null;
+
         public frmAgregarCategoria()
         {
             InitializeComponent();
         }
 
-        //para modificar:
+        
         public frmAgregarCategoria(Categoria categoria)
         {
             InitializeComponent();
             this.categoria = categoria;
-            Text = "Modificar Categoria";
-            label1.Text = "Modificar categoria";
-        }
-        //boton aceptar:
-        private void button1_Click(object sender, EventArgs e)
-        {
-            CategoriaNegocio negocio = new CategoriaNegocio();
-            try
-            {
-                categoria.Descripcion = txtDescripcion.Text;
-                if (categoria != null && categoria.Id != 0) //estoy modificando si id !=0
-                {
-
-                    negocio.Modificar(categoria);
-                    MessageBox.Show("modificado exitosamente!");
-
-                }
-                else
-                {
-                    negocio.agregar(categoria);
-                    MessageBox.Show("Agregado exitosamente!");
-                }
-
-
-
-                Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            Text = "Modificar Categoría";
+            label1.Text = "Modificar categoría";
         }
 
         private void frmAgregarCategoria_Load(object sender, EventArgs e)
         {
-            if (categoria != null) // si se toca el boton agregar PRECARGO txtDescripcion
+            if (categoria != null) 
             {
                 txtDescripcion.Text = categoria.Descripcion;
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CategoriaNegocio negocio = new CategoriaNegocio();
 
-        //boton cancelar:
+            try
+            {
+              
+                if (categoria == null)
+                    categoria = new Categoria();
+
+                categoria.Descripcion = txtDescripcion.Text;
+
+                if (categoria.Id != 0) 
+                {
+                    negocio.Modificar(categoria);
+                    MessageBox.Show("¡Categoría modificada exitosamente!");
+                }
+                else
+                {
+                    negocio.agregar(categoria);
+                    MessageBox.Show("¡Categoría agregada exitosamente!");
+                }
+
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             Close();
         }
-
     }
 }
