@@ -111,7 +111,15 @@ namespace TPWinForm_equipo_10A
                 nuevoArticulo.Marca = (Marca)cboMarca.SelectedItem;
                 nuevoArticulo.Categoria = (Categoria)cboCategoria.SelectedItem;
                 //aca agregar IMAGEN- video 14
-                nuevoArticulo.Precio = decimal.Parse(txtPrecio.Text);
+               // nuevoArticulo.Precio = decimal.Parse(txtPrecio.Text);
+
+                decimal precio;
+                if (!decimal.TryParse(txtPrecio.Text, out precio))
+                {
+                    MessageBox.Show("Por favor, ingrese un valor numérico válido para el precio.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                nuevoArticulo.Precio = precio;
 
                 nuevoArticulo.Imagenes = new List<Imagen>();
 

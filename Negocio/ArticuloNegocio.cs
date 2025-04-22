@@ -41,10 +41,13 @@ namespace Negocio
                     Articulo aux = new Articulo();
 
                     aux.Id = (int)lector["Id"];
-                    aux.Codigo = (string)lector["Codigo"];
-                    aux.Nombre = (string)lector["Nombre"];
-                    aux.Descripcion = (string)lector["Descripcion"];
-                    aux.Precio = (decimal)lector["Precio"];
+
+                    aux.Codigo = lector["Codigo"] != DBNull.Value ? (string)lector["Codigo"] : "No especifica";
+                    aux.Nombre = lector["Nombre"] != DBNull.Value ? (string)lector["Nombre"] : "No especifica";
+                    aux.Descripcion = lector["Descripcion"] != DBNull.Value ? (string)lector["Descripcion"] : "No especifica";
+                    //aux.Precio = lector["Precio"] != DBNull.Value ? (decimal?)lector["Precio"] : null;
+                    aux.Precio = lector["Precio"] != DBNull.Value ? (decimal)lector["Precio"] : 0;
+
 
                     aux.Marca = new Marca();
                     //aux.Marca.Descripcion = (string)lector["Marca"];
@@ -84,26 +87,38 @@ namespace Negocio
         public int agregarArticuloYDevolverId(Articulo nuevoArticulo)
         {
             int idGenerado;
-            SqlConnection conexion = new SqlConnection( "server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true");
+            SqlConnection conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true");
             SqlCommand comando = new SqlCommand();
+
             try
             {
                 comando.Connection = conexion;
                 comando.CommandType = System.Data.CommandType.Text;
                 comando.CommandText = @"INSERT INTO Articulos (Codigo, Nombre, Descripcion, Precio, IdMarca, IdCategoria) 
-                                VALUES (@Codigo, @Nombre, @Descripcion, @Precio, @IdMarca, @IdCategoria);
-                                SELECT SCOPE_IDENTITY();";
+                        VALUES (@Codigo, @Nombre, @Descripcion, @Precio, @IdMarca, @IdCategoria);
+                        SELECT SCOPE_IDENTITY();";
 
-                comando.Parameters.AddWithValue("@Codigo", nuevoArticulo.Codigo);
-                comando.Parameters.AddWithValue("@Nombre", nuevoArticulo.Nombre);
-                comando.Parameters.AddWithValue("@Descripcion", nuevoArticulo.Descripcion);
-                comando.Parameters.AddWithValue("@Precio", nuevoArticulo.Precio);
-                comando.Parameters.AddWithValue("@IdMarca", nuevoArticulo.Marca.Id);
-                comando.Parameters.AddWithValue("@IdCategoria", nuevoArticulo.Categoria.Id);
+                comando.Parameters.AddWithValue("@Codigo", string.IsNullOrWhiteSpace(nuevoArticulo.Codigo)
+                    ? (object)DBNull.Value
+                    : nuevoArticulo.Codigo);
+
+                comando.Parameters.AddWithValue("@Nombre", string.IsNullOrWhiteSpace(nuevoArticulo.Nombre)
+                    ? (object)DBNull.Value
+                    : nuevoArticulo.Nombre);
+
+                comando.Parameters.AddWithValue("@Descripcion", string.IsNullOrWhiteSpace(nuevoArticulo.Descripcion)
+                    ? (object)DBNull.Value
+                    : nuevoArticulo.Descripcion);
+
+                comando.Parameters.AddWithValue("@Precio", nuevoArticulo.Precio.HasValue
+                    ? (object)nuevoArticulo.Precio.Value
+                    : DBNull.Value);
+
+                comando.Parameters.AddWithValue("@IdMarca", nuevoArticulo.Marca?.Id ?? (object)DBNull.Value);
+                comando.Parameters.AddWithValue("@IdCategoria", nuevoArticulo.Categoria?.Id ?? (object)DBNull.Value);
 
                 conexion.Open();
-                idGenerado = Convert.ToInt32(comando.ExecuteScalar()); //recupero el ID generado
-
+                idGenerado = Convert.ToInt32(comando.ExecuteScalar());
                 return idGenerado;
             }
             catch (Exception ex)
@@ -114,6 +129,7 @@ namespace Negocio
             {
                 conexion.Close();
             }
+
         }
         public void agregarImagenUrl(int idArticulo, List<Imagen> imagenes)
         {

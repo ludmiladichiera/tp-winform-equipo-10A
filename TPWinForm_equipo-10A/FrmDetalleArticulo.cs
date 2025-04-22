@@ -32,13 +32,21 @@ namespace TPWinForm_equipo_10A
         {
             if (dgvArticulos.CurrentRow != null)
             {
-                articuloSeleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
 
-                ImagenNegocio imagenNegocio = new ImagenNegocio();
-                articuloSeleccionado.Imagenes = imagenNegocio.listar(articuloSeleccionado.Id);
+                string imagenUrl = seleccionado.Imagenes != null && seleccionado.Imagenes.Count > 0
+                    ? seleccionado.Imagenes[0].ImagenUrl
+                    : "https://media.istockphoto.com/id/1128826884/es/vector/ning%C3%BAn-s%C3%ADmbolo-de-vector-de-imagen-falta-icono-disponible-no-hay-galer%C3%ADa-para-este-momento.jpg?s=612x612&w=0&k=20&c=9vnjI4XI3XQC0VHfuDePO7vNJE7WDM8uzQmZJ1SnQgk=";
 
-                indiceImagen = 0;
-                mostrarImagen();
+                try
+                {
+                    pbxArticulo.Load(imagenUrl);
+                }
+                catch
+                {
+
+                    pbxArticulo.Load("https://media.istockphoto.com/id/1128826884/es/vector/ning%C3%BAn-s%C3%ADmbolo-de-vector-de-imagen-falta-icono-disponible-no-hay-galer%C3%ADa-para-este-momento.jpg?s=612x612&w=0&k=20&c=9vnjI4XI3XQC0VHfuDePO7vNJE7WDM8uzQmZJ1SnQgk=");
+                }
             }
         }
 
