@@ -113,5 +113,20 @@ namespace TPWinForm_equipo_10A
                 MessageBox.Show($"Artículo seleccionado: {articuloSeleccionado.Nombre}");
             }*/
         }
+
+        private void btnImagen_Click(object sender, EventArgs e)
+        {
+            if (dgvArticulos.CurrentRow != null)
+            {
+                Articulo articuloSeleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                frmVerImagen frm = new frmVerImagen(articuloSeleccionado.Id);
+                frm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Por favor selecciona un artículo.");
+            }
+        }
+
     }
 }

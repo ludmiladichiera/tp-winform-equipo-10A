@@ -338,28 +338,27 @@ namespace Negocio
                     }
                 }
 
-                // Se completa el GROUP BY
+                
                 consulta += " GROUP BY A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio, M.Descripcion, C.Descripcion";
 
-                // Establecer la consulta
                 datos.setearConsulta(consulta);
 
-                // Agregar el parámetro @filtro
+                
                 if (campo == "Precio")
                 {
-                    // Si es un valor numérico, lo pasamos como parámetro directamente
+                    
                     datos.setearParametro("@filtro", filtro);
                 }
                 else
                 {
-                    // Si no es precio, agregamos el filtro como un valor con % para LIKE
+                    
                     datos.setearParametro("@filtro", "%" + filtro + "%");
                 }
 
-                // Ejecutar la lectura
+                
                 datos.ejecutarLectura();
 
-                // Leer los datos obtenidos
+              
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();

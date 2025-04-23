@@ -30,8 +30,7 @@
         {
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
             this.pbxArticulo = new System.Windows.Forms.PictureBox();
-            this.btnAtras = new System.Windows.Forms.Button();
-            this.btnSiguiente = new System.Windows.Forms.Button();
+            this.btnImagen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.SuspendLayout();
@@ -63,33 +62,22 @@
             this.pbxArticulo.TabStop = false;
             this.pbxArticulo.Click += new System.EventHandler(this.pbxArticulo_Click);
             // 
-            // btnAtras
+            // btnImagen
             // 
-            this.btnAtras.Location = new System.Drawing.Point(842, 403);
-            this.btnAtras.Name = "btnAtras";
-            this.btnAtras.Size = new System.Drawing.Size(57, 29);
-            this.btnAtras.TabIndex = 2;
-            this.btnAtras.Text = "<";
-            this.btnAtras.UseVisualStyleBackColor = true;
-            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
-            // 
-            // btnSiguiente
-            // 
-            this.btnSiguiente.Location = new System.Drawing.Point(938, 403);
-            this.btnSiguiente.Name = "btnSiguiente";
-            this.btnSiguiente.Size = new System.Drawing.Size(54, 26);
-            this.btnSiguiente.TabIndex = 3;
-            this.btnSiguiente.Text = ">";
-            this.btnSiguiente.UseVisualStyleBackColor = true;
-            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            this.btnImagen.Location = new System.Drawing.Point(832, 406);
+            this.btnImagen.Name = "btnImagen";
+            this.btnImagen.Size = new System.Drawing.Size(180, 47);
+            this.btnImagen.TabIndex = 2;
+            this.btnImagen.Text = "Ver imagenes";
+            this.btnImagen.UseVisualStyleBackColor = true;
+            this.btnImagen.Click += new System.EventHandler(this.btnImagen_Click);
             // 
             // FrmDetalleArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1193, 450);
-            this.Controls.Add(this.btnSiguiente);
-            this.Controls.Add(this.btnAtras);
+            this.ClientSize = new System.Drawing.Size(1193, 483);
+            this.Controls.Add(this.btnImagen);
             this.Controls.Add(this.pbxArticulo);
             this.Controls.Add(this.dgvArticulos);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -106,7 +94,6 @@
 
         private System.Windows.Forms.DataGridView dgvArticulos;
         private System.Windows.Forms.PictureBox pbxArticulo;
-        private System.Windows.Forms.Button btnAtras;
-        private System.Windows.Forms.Button btnSiguiente;
+        private System.Windows.Forms.Button btnImagen;
     }
 }
