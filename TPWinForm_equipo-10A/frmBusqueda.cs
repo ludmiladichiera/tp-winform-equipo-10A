@@ -83,7 +83,7 @@ namespace TPWinForm_equipo_10A
                 string criterio = cboCriterio.SelectedItem.ToString();
                 string filtro = txtFiltro.Text;
 
-                // Validación especial si es campo "Precio"
+               
                 if (campo == "Precio")
                 {
                     if (!decimal.TryParse(filtro, out _))

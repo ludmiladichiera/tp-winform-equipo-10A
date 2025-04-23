@@ -45,7 +45,71 @@ namespace TPWinForm_equipo_10A
                 }
             }
         }
-    }
+        private void cargarImagenes()
+        {
+            try
+            {
+                ImagenNegocio imagenNegocio = new ImagenNegocio();
+                List<Imagen> listaImagenes = imagenNegocio.listar(idArticulo);
+                dgvImagen.DataSource = null; // por las dudas, resetea
+                dgvImagen.DataSource = listaImagenes;
 
+                dgvImagen.Columns["Id"].Visible = false;
+                dgvImagen.Columns["IdArticulo"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar las imágenes: " + ex.Message);
+            }
+        }
+
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmAgregarImagen agregarImagen = new frmAgregarImagen(idArticulo);
+            agregarImagen.ShowDialog();
+            cargarImagenes();
+
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            if (dgvImagen.CurrentRow != null)
+            {
+                Imagen imagenSeleccionada = (Imagen)dgvImagen.CurrentRow.DataBoundItem;
+                frmAgregarImagen agregarImagen = new frmAgregarImagen(idArticulo, imagenSeleccionada.Id); // Pasamos el idImagen
+                agregarImagen.ShowDialog();
+                cargarImagenes();  
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona una imagen para modificar.");
+            }
+        }
+
+
+        
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dgvImagen.CurrentRow != null)
+            {
+                Imagen imagenSeleccionada = (Imagen)dgvImagen.CurrentRow.DataBoundItem;
+
+                DialogResult confirmacion = MessageBox.Show(
+                    "¿Estás seguro que querés eliminar esta imagen?",
+                    "Eliminar imagen",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+
+                if (confirmacion == DialogResult.Yes)
+                {
+                    ImagenNegocio negocio = new ImagenNegocio();
+                    negocio.eliminarImagen(imagenSeleccionada.Id);
+                    cargarImagenes(); 
+                }
+            }
+        }
+    }
 }
-    
+      

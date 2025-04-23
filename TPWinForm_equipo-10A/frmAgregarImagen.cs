@@ -15,11 +15,22 @@ namespace TPWinForm_equipo_10A
     public partial class frmAgregarImagen : Form
     {
         private int _nuevoId;
+        private int _idArticulo;
+        private int? _idImagen;
+
+
         public frmAgregarImagen(int nuevoId)
         {
             InitializeComponent();
-            _nuevoId = nuevoId; // Guarda el nuevoId en una variable de la clase
+            _nuevoId = nuevoId; //guarda id
         }
+        public frmAgregarImagen(int idArticulo, int? idImagen = null)
+        {
+            InitializeComponent();
+            _idArticulo = idArticulo;
+            _idImagen = idImagen;
+        }
+
 
         private void frmAgregarImagen_Load(object sender, EventArgs e)
         {
@@ -60,7 +71,6 @@ namespace TPWinForm_equipo_10A
             ImagenNegocio negocio = new ImagenNegocio();
             Imagen nuevaImagen = new Imagen();
 
-            // Asigna el nuevoId a la propiedad correspondiente
             nuevaImagen.IdArticulo = _nuevoId;
             nuevaImagen.ImagenUrl = txtUrlImagen.Text;
 

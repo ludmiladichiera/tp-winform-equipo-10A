@@ -293,7 +293,7 @@ namespace Negocio
                             LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo
                             WHERE ";
 
-                // Añadir el filtro correspondiente según el campo
+                
                 if (campo == "Codigo")
                 {
                     consulta += "A.Codigo LIKE @filtro";
@@ -316,7 +316,7 @@ namespace Negocio
                 }
                 else if (campo == "Precio")
                 {
-                    // Asegurarse de que el filtro sea numérico en el caso de "Precio"
+                    
                     if (decimal.TryParse(filtro, out decimal precio))
                     {
                         switch (criterio)
